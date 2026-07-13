@@ -16,7 +16,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a1a;color:#fff;min-h
 .card p{color:#888;font-size:13px;margin-bottom:8px;line-height:1.5}
 textarea{width:100%;height:250px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;padding:14px;color:#ccc;font-family:'Courier New',monospace;font-size:13px;line-height:1.7;resize:vertical}
 textarea:focus{border-color:#f5af19;outline:none}
-input[type=text]{width:100%;padding:13px 16px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;color:#fff;font-size:15px;margin:6px 0}
+input[type=text],input[type=number]{width:100%;padding:13px 16px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;color:#fff;font-size:15px;margin:6px 0}
 input:focus{border-color:#f5af19;outline:none}
 .bn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;text-align:center;letter-spacing:1px;text-transform:uppercase}
 .bn-o{background:linear-gradient(135deg,#f5af19,#f12711);color:#000}
@@ -37,6 +37,7 @@ input:focus{border-color:#f5af19;outline:none}
 .tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .tp span{color:#888;font-size:13px;font-weight:600}
 .tm{color:#f5af19;font-size:22px;font-weight:800;font-family:monospace}
+.tm-red{color:#f45c43}
 .pb{width:100%;height:4px;background:#1e1e3a;border-radius:2px;margin-bottom:16px}
 .pf{height:100%;background:linear-gradient(90deg,#f5af19,#f12711);border-radius:2px;transition:width 0.4s}
 .qn{display:inline-block;background:linear-gradient(135deg,#f5af19,#f12711);color:#000;padding:4px 14px;border-radius:14px;font-size:11px;font-weight:700;margin-bottom:10px}
@@ -85,16 +86,21 @@ input:focus{border-color:#f5af19;outline:none}
 .saved-info{flex:1}
 .saved-info .si-t{color:#ddd;font-size:13px;font-weight:600}
 .saved-info .si-d{color:#555;font-size:11px;margin-top:2px}
-.saved-btns{display:flex;gap:5px}
-.saved-btns button{padding:6px 10px;border:none;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;text-transform:uppercase}
+.saved-btns{display:flex;gap:5px;flex-wrap:wrap}
+.saved-btns button{padding:6px 10px;border:none;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;text-transform:uppercase;margin-top:3px}
 .sb-del{background:#f45c43;color:#fff}
 .sb-share{background:#25d366;color:#fff}
+.sb-res{background:#667eea;color:#fff}
 .warnpage{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,92,67,0.95);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
 .warnpage.active{display:flex}
 .warninner{text-align:center;max-width:400px}
 .warninner h2{color:#fff;font-size:24px;margin-bottom:12px}
 .warninner p{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.6;margin-bottom:16px}
 .loader{text-align:center;padding:20px;color:#f5af19;font-size:14px}
+.res-row{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:10px;margin:5px 0;flex-wrap:wrap;gap:5px}
+.res-name{color:#ddd;font-size:13px;font-weight:600}
+.res-score{font-size:13px;font-weight:700}
+.res-detail{color:#555;font-size:11px;width:100%}
 .footer{text-align:center;padding:20px;color:#333;font-size:10px;letter-spacing:2px;margin-top:20px}
 @media(max-width:600px){
 .topbar h1{font-size:18px;letter-spacing:3px}
@@ -146,10 +152,10 @@ input:focus{border-color:#f5af19;outline:none}
 <div class="inf"><b>01</b> Create MCQ tests instantly</div>
 <div class="inf"><b>02</b> Share short test code via WhatsApp</div>
 <div class="inf"><b>03</b> Student name registration</div>
-<div class="inf"><b>04</b> Built-in timer and question map</div>
+<div class="inf"><b>04</b> Built-in timer with time limit</div>
 <div class="inf"><b>05</b> Anti-cheating protection</div>
 <div class="inf"><b>06</b> Instant result with answer review</div>
-<div class="inf"><b>07</b> Manage and delete your tests</div>
+<div class="inf"><b>07</b> Student results dashboard</div>
 <div class="inf"><b>08</b> Works on all devices</div>
 </div>
 <div class="card">
@@ -174,6 +180,8 @@ Answer: B<br><br>
 </div>
 <textarea id="t1" placeholder="Paste your MCQ questions here..."></textarea>
 <div id="m1"></div>
+<p style="color:#f5af19;font-size:13px;margin-top:12px">Set time limit for this test (in minutes):</p>
+<input type="number" id="timeLimit" placeholder="Enter minutes (e.g. 30). Leave empty for no limit." min="1" max="180">
 <div class="rw">
 <button class="bn bn-g" onclick="checkQ()">Check</button>
 <button class="bn bn-o" onclick="createTest()">Create Test</button>
@@ -276,6 +284,15 @@ Answer: B<br><br>
 <button class="bn bn-b" style="margin-top:12px" onclick="resetAll()">Back to Home</button>
 </div>
 
+<div id="p7" class="nn">
+<div class="card">
+<div class="hd"><div class="hd-ic">D</div><h2 style="margin:0">Results Dashboard</h2></div>
+<p id="dashTitle">Student results for this test:</p>
+<div id="dashList"><p class="loader">Loading results...</p></div>
+</div>
+<button class="bn bn-d" style="margin-top:10px" onclick="goTo('p0')">Back to Home</button>
+</div>
+
 <div class="footer">NAIN MCQ TEST PLATFORM</div>
 </div>
 
@@ -298,7 +315,10 @@ var QS=[];
 var IX=0;
 var AN=[];
 var TM=null;
+var LM=null;
 var SC=0;
+var TIMELIMIT=0;
+var TIMEREMAIN=0;
 var NM="";
 var WARN=0;
 var TESTING=false;
@@ -307,7 +327,7 @@ var MAXWARN=3;
 var CURCODE="";
 
 function goTo(id){
-var ps=["p0","p1","p2","p3","p4","p5","p6"];
+var ps=["p0","p1","p2","p3","p4","p5","p6","p7"];
 for(var i=0;i<ps.length;i++){document.getElementById(ps[i]).className="nn";}
 document.getElementById(id).className="";
 window.scrollTo(0,0);
@@ -315,7 +335,8 @@ window.scrollTo(0,0);
 
 function resetAll(){
 if(TM){clearInterval(TM);TM=null;}
-QS=[];AN=[];IX=0;SC=0;NM="";WARN=0;TESTING=false;CURCODE="";
+if(LM){clearInterval(LM);LM=null;}
+QS=[];AN=[];IX=0;SC=0;NM="";WARN=0;TESTING=false;CURCODE="";TIMELIMIT=0;TIMEREMAIN=0;
 loadSaved();
 goTo("p0");
 }
@@ -387,9 +408,12 @@ var mb=document.getElementById("m1");
 if(!raw||raw.length<10){mb.innerHTML="<div class='mg mg-r'>Please paste questions first.</div>";return;}
 var res=parseQuestions(raw);
 if(res.length===0){mb.innerHTML="<div class='mg mg-r'>No valid questions found.</div>";return;}
+var tlVal=document.getElementById("timeLimit").value;
+var tl=tlVal?parseInt(tlVal):0;
+if(tlVal&&(isNaN(tl)||tl<1||tl>180)){mb.innerHTML="<div class='mg mg-r'>Please enter a valid time limit between 1 and 180 minutes.</div>";return;}
 mb.innerHTML="<div class='mg mg-y'>Creating test... Please wait.</div>";
 var code=makeCode();
-var testData={questions:[],created:new Date().toISOString(),count:res.length};
+var testData={questions:[],created:new Date().toISOString(),count:res.length,timeLimit:tl};
 for(var i=0;i<res.length;i++){
 var q=res[i];
 var opts=[];
@@ -438,8 +462,12 @@ return;
 }
 QS=data.questions;
 CURCODE=code;
+TIMELIMIT=data.timeLimit?data.timeLimit:0;
 mb.innerHTML="";
-document.getElementById("testInfo").innerHTML="<div class='mg mg-g'>Test loaded: "+QS.length+" questions. Enter your name and click Start Test.</div>";
+var infoMsg="Test loaded: "+QS.length+" questions.";
+if(TIMELIMIT>0){infoMsg+=" Time limit: "+TIMELIMIT+" minutes.";}
+infoMsg+=" Enter your name and click Start Test.";
+document.getElementById("testInfo").innerHTML="<div class='mg mg-g'>"+infoMsg+"</div>";
 goTo("p3");
 }).catch(function(err){
 mb.innerHTML="<div class='mg mg-r'>Error loading test. Check internet connection.</div>";
@@ -459,12 +487,14 @@ for(var i=keys.length-1;i>=0;i--){
 var k=keys[i];
 var t=data[k];
 var d=t.created?t.created.substring(0,10):"Unknown";
+var tlTxt=t.timeLimit&&t.timeLimit>0?" | "+t.timeLimit+" min":"";
 h+="<div class='saved-item'>";
 h+="<div class='saved-info'>";
-h+="<div class='si-t'>Code: "+k+" | "+t.count+" Questions</div>";
+h+="<div class='si-t'>Code: "+k+" | "+t.count+" Questions"+tlTxt+"</div>";
 h+="<div class='si-d'>Created: "+d+"</div>";
 h+="</div>";
 h+="<div class='saved-btns'>";
+h+="<button class='sb-res' onclick=\"showDash('"+k+"')\">Results</button>";
 h+="<button class='sb-share' onclick=\"shareS('"+k+"')\">Share</button>";
 h+="<button class='sb-del' onclick=\"delS('"+k+"')\">Delete</button>";
 h+="</div></div>";
@@ -475,6 +505,40 @@ el.innerHTML="<p style='color:#444;font-size:12px'>Could not load tests.</p>";
 });
 }
 
+function showDash(code){
+goTo("p7");
+document.getElementById("dashTitle").textContent="Student results for test code: "+code;
+document.getElementById("dashList").innerHTML="<p class='loader'>Loading results...</p>";
+db.ref("results/"+code).once("value").then(function(snap){
+var data=snap.val();
+if(!data){
+document.getElementById("dashList").innerHTML="<p style='color:#444;font-size:13px'>No students have taken this test yet.</p>";
+return;
+}
+var keys=Object.keys(data);
+var h="<p style='color:#555;font-size:12px;margin-bottom:10px'>Total students: "+keys.length+"</p>";
+var sorted=[];
+for(var i=0;i<keys.length;i++){sorted.push(data[keys[i]]);}
+sorted.sort(function(a,b){return b.score-a.score;});
+for(var i=0;i<sorted.length;i++){
+var r=sorted[i];
+var sc=r.score;
+var col=sc>=75?"gn":sc>=50?"yw":"rd";
+var mm=Math.floor(r.time/60);var ss=r.time%60;
+var timeStr=(mm<10?"0"+mm:mm)+":"+(ss<10?"0"+ss:ss);
+var warnTxt=r.warnings>0?" | Warnings: "+r.warnings:"";
+h+="<div class='res-row'>";
+h+="<span class='res-name'>"+(i+1)+". "+r.name+"</span>";
+h+="<span class='res-score "+col+"'>"+sc+"%</span>";
+h+="<span class='res-detail'>Correct: "+r.correct+" | Wrong: "+r.wrong+" | Skipped: "+r.skipped+" | Time: "+timeStr+warnTxt+"</span>";
+h+="</div>";
+}
+document.getElementById("dashList").innerHTML=h;
+}).catch(function(err){
+document.getElementById("dashList").innerHTML="<p style='color:#f45c43;font-size:13px'>Error loading results.</p>";
+});
+}
+
 function shareS(code){
 var link=window.location.href.split("?")[0].split("#")[0];
 var msg="NAIN MCQ Test\n\nYour test code is: "+code+"\n\nOpen this link:\n"+link+"\n\nClick Student, enter code: "+code;
@@ -482,8 +546,9 @@ window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
 }
 
 function delS(code){
-if(!confirm("Delete test "+code+"?"))return;
-db.ref("tests/"+code).remove().then(function(){
+if(!confirm("Delete test "+code+"? This will also delete all student results."))return;
+db.ref("tests/"+code).remove();
+db.ref("results/"+code).remove().then(function(){
 loadSaved();
 }).catch(function(err){
 alert("Error deleting test.");
@@ -500,10 +565,32 @@ for(var i=0;i<QS.length;i++)AN.push(null);
 document.getElementById("v1").textContent=NM;
 document.getElementById("qCount").textContent=QS.length+" Questions";
 if(TM)clearInterval(TM);
+if(LM)clearInterval(LM);
+
+if(TIMELIMIT>0){
+TIMEREMAIN=TIMELIMIT*60;
+LM=setInterval(function(){
+TIMEREMAIN--;
+var mm=Math.floor(TIMEREMAIN/60);
+var ss=TIMEREMAIN%60;
+var timeStr=(mm<10?"0"+mm:mm)+":"+(ss<10?"0"+ss:ss);
+var el=document.getElementById("v3");
+if(TIMEREMAIN<=60){el.className="tm tm-red";}
+else{el.className="tm";}
+el.textContent="TIME: "+timeStr;
+if(TIMEREMAIN<=0){
+clearInterval(LM);LM=null;
+alert("Time is up! Test will be submitted now.");
+submitTest();
+}
+},1000);
+}else{
 TM=setInterval(function(){
 SC++;var mm=SC/60|0;var ss=SC%60;
 document.getElementById("v3").textContent=(mm<10?"0"+mm:mm)+":"+(ss<10?"0"+ss:ss);
 },1000);
+}
+
 var mh="";
 for(var i=0;i<QS.length;i++){mh+="<div class='dt' id='dt"+i+"' onclick='qJump("+i+")'>"+(i+1)+"</div>";}
 document.getElementById("v6").innerHTML=mh;
@@ -557,8 +644,9 @@ document.getElementById("warnPage").className="warnpage";
 
 function submitTest(){
 var un=0;for(var i=0;i<AN.length;i++){if(AN[i]===null)un++;}
-if(TESTING&&un>0){if(!confirm(un+" questions unanswered. Submit anyway?"))return;}
+if(TESTING&&un>0&&TIMEREMAIN!==0){if(!confirm(un+" questions unanswered. Submit anyway?"))return;}
 if(TM){clearInterval(TM);TM=null;}
+if(LM){clearInterval(LM);LM=null;}
 TESTING=false;READY=false;
 document.getElementById("warnPage").className="warnpage";
 var co=0,wr=0,sk=0;
@@ -568,9 +656,10 @@ else if(AN[i]===QS[i].a)co++;
 else wr++;
 }
 var pc=Math.round(co/QS.length*100);
+var timeTaken=TIMELIMIT>0?(TIMELIMIT*60-TIMEREMAIN):SC;
 
 if(CURCODE&&NM){
-var resultData={name:NM,score:pc,correct:co,wrong:wr,skipped:sk,total:QS.length,time:SC,warnings:WARN,date:new Date().toISOString()};
+var resultData={name:NM,score:pc,correct:co,wrong:wr,skipped:sk,total:QS.length,time:timeTaken,warnings:WARN,date:new Date().toISOString()};
 db.ref("results/"+CURCODE).push(resultData).catch(function(e){});
 }
 
@@ -589,7 +678,7 @@ document.getElementById("w5").textContent=co;
 document.getElementById("w6").textContent=wr;
 document.getElementById("w7").textContent=sk;
 document.getElementById("w8").textContent=QS.length;
-var mm=SC/60|0;var ss=SC%60;
+var mm=Math.floor(timeTaken/60);var ss=timeTaken%60;
 var timeStr="Time: "+(mm<10?"0"+mm:mm)+":"+(ss<10?"0"+ss:ss);
 if(WARN>0){timeStr+=" | Warnings: "+WARN;}
 document.getElementById("w9").textContent=timeStr;
