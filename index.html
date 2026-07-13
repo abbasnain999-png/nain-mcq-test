@@ -8,21 +8,16 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a1a;color:#fff;min-height:100vh;padding:0;overflow-x:hidden}
 .wrap{max-width:780px;margin:0 auto;padding:12px}
-
 .topbar{background:#12122a;border-bottom:1px solid #222;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
 .topbar h1{font-size:22px;color:#f5af19;letter-spacing:5px;font-weight:900}
 .topbar span{color:#555;font-size:10px;letter-spacing:2px}
-
 .card{background:linear-gradient(145deg,#12122a,#1a1a35);border:1px solid #1e1e3a;border-radius:16px;padding:22px;margin-top:16px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 .card h2{color:#f5af19;margin-bottom:10px;font-size:17px;font-weight:700}
 .card p{color:#888;font-size:13px;margin-bottom:8px;line-height:1.5}
-
 textarea{width:100%;height:250px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;padding:14px;color:#ccc;font-family:'Courier New',monospace;font-size:13px;line-height:1.7;resize:vertical;transition:border 0.3s}
 textarea:focus{border-color:#f5af19;outline:none}
-
 input[type=text]{width:100%;padding:13px 16px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;color:#fff;font-size:15px;margin:6px 0;transition:border 0.3s}
 input:focus{border-color:#f5af19;outline:none}
-
 .bn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;text-align:center;letter-spacing:1px;transition:all 0.3s;text-transform:uppercase}
 .bn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(0,0,0,0.3)}
 .bn:active{transform:translateY(0)}
@@ -32,47 +27,34 @@ input:focus{border-color:#f5af19;outline:none}
 .bn-r{background:linear-gradient(135deg,#eb3349,#f45c43);color:#fff}
 .bn-d{background:#1e1e3a;color:#888}
 .bn-w{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff}
-
 .rw{display:flex;gap:8px;margin-top:10px}
 .rw .bn{flex:1}
-
 .mg{padding:10px 14px;border-radius:10px;margin:8px 0;font-size:13px;line-height:1.5}
 .mg-g{background:rgba(56,239,125,0.1);border:1px solid rgba(56,239,125,0.3);color:#38ef7d}
 .mg-r{background:rgba(244,92,67,0.1);border:1px solid rgba(244,92,67,0.3);color:#f45c43}
 .mg-b{background:rgba(102,126,234,0.1);border:1px solid rgba(102,126,234,0.3);color:#667eea}
 .mg-y{background:rgba(245,175,25,0.1);border:1px solid rgba(245,175,25,0.3);color:#f5af19}
-
 .lbx{background:#0a0a1a;border:1px solid #f5af19;padding:12px;border-radius:10px;color:#f5af19;font-size:10px;word-break:break-all;margin:8px 0;font-family:monospace;user-select:all;line-height:1.6}
-
 .tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:5px}
 .tp span{color:#888;font-size:13px;font-weight:600}
 .tm{color:#f5af19;font-size:22px;font-weight:800;font-family:monospace}
-
 .pb{width:100%;height:4px;background:#1e1e3a;border-radius:2px;margin-bottom:16px;overflow:hidden}
 .pf{height:100%;background:linear-gradient(90deg,#f5af19,#f12711);border-radius:2px;transition:width 0.4s}
-
 .qn{display:inline-block;background:linear-gradient(135deg,#f5af19,#f12711);color:#000;padding:4px 14px;border-radius:14px;font-size:11px;font-weight:700;margin-bottom:10px}
-
 .qt{font-size:17px;line-height:1.7;margin-bottom:18px;color:#e8e8e8}
-
 .op{display:flex;align-items:center;padding:13px 16px;background:rgba(255,255,255,0.03);border:2px solid #1e1e3a;border-radius:12px;cursor:pointer;margin-bottom:8px;font-size:14px;transition:all 0.2s;line-height:1.4}
 .op:hover{border-color:#f5af19;background:rgba(245,175,25,0.05)}
 .op.on{border-color:#f5af19;background:rgba(245,175,25,0.1)}
-
 .od{width:32px;height:32px;border-radius:50%;background:#1e1e3a;display:flex;align-items:center;justify-content:center;margin-right:12px;font-weight:800;font-size:13px;flex-shrink:0;transition:all 0.2s}
 .op.on .od{background:linear-gradient(135deg,#f5af19,#f12711);color:#000}
-
 .bg{display:inline-block;background:rgba(245,175,25,0.1);border:1px solid rgba(245,175,25,0.3);padding:5px 14px;border-radius:14px;font-size:12px;color:#f5af19;margin-bottom:8px}
-
 .ds{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .dt{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;cursor:pointer;border:1px solid #1e1e3a;background:rgba(255,255,255,0.02);color:#444;transition:all 0.2s}
 .dt:hover{border-color:#667eea}
 .dt-d{background:rgba(56,239,125,0.1);border-color:rgba(56,239,125,0.4);color:#38ef7d}
 .dt-c{background:rgba(245,175,25,0.15);border-color:#f5af19;color:#f5af19}
-
 .ct{text-align:center}
 .sc{font-size:64px;font-weight:900;color:#f5af19;margin:12px 0}
-
 .sr{display:flex;justify-content:center;gap:12px;margin:18px 0;flex-wrap:wrap}
 .sb{text-align:center;padding:14px 16px;background:rgba(255,255,255,0.03);border:1px solid #1e1e3a;border-radius:12px;min-width:70px}
 .sb .n{font-size:24px;font-weight:900}
@@ -81,7 +63,6 @@ input:focus{border-color:#f5af19;outline:none}
 .rd{color:#f45c43}
 .yw{color:#f5af19}
 .bl{color:#667eea}
-
 .rc{background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:12px;padding:14px;margin-top:10px;text-align:left}
 .rc-g{border-left:3px solid #38ef7d}
 .rc-r{border-left:3px solid #f45c43}
@@ -94,29 +75,21 @@ input:focus{border-color:#f5af19;outline:none}
 .ra{padding:6px 10px;border-radius:8px;margin:3px 0;font-size:12px;line-height:1.4}
 .ra-g{background:rgba(56,239,125,0.05);color:#38ef7d;border-left:2px solid #38ef7d}
 .ra-r{background:rgba(244,92,67,0.05);color:#f45c43;border-left:2px solid #f45c43}
-
 .nn{display:none}
-
 .gr{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
 .gc{flex:1;min-width:180px;padding:24px 16px;background:rgba(255,255,255,0.03);border:2px solid #1e1e3a;border-radius:16px;cursor:pointer;text-align:center;transition:all 0.3s}
 .gc:hover{border-color:#f5af19;background:rgba(245,175,25,0.05);transform:translateY(-3px)}
 .gc .i{font-size:28px;margin-bottom:10px;font-weight:900;color:#f5af19}
 .gc .t{font-size:16px;font-weight:700;color:#f5af19;letter-spacing:1px}
 .gc .d{font-size:11px;color:#555;margin-top:6px;line-height:1.5}
-
 .fm{background:rgba(245,175,25,0.05);border-left:3px solid #f5af19;padding:12px 14px;border-radius:0 10px 10px 0;margin:12px 0;font-size:11px;color:#888;line-height:2;font-family:monospace}
 .fm b{color:#f5af19}
-
 .inf{display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:8px;margin:5px 0;font-size:12px;color:#888}
 .inf b{color:#f5af19;min-width:18px}
-
 .dvd{height:1px;background:#1e1e3a;margin:16px 0}
-
 .cnt{background:linear-gradient(135deg,#f5af19,#f12711);color:#000;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-right:8px;flex-shrink:0}
-
 .hd{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .hd-ic{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f5af19,#f12711);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000;flex-shrink:0}
-
 .saved-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:10px;margin:6px 0;transition:all 0.2s}
 .saved-item:hover{border-color:#667eea}
 .saved-info{flex:1}
@@ -124,20 +97,15 @@ input:focus{border-color:#f5af19;outline:none}
 .saved-info .si-d{color:#555;font-size:11px;margin-top:2px}
 .saved-btns{display:flex;gap:5px}
 .saved-btns button{padding:6px 10px;border:none;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;text-transform:uppercase}
-.sb-open{background:#667eea;color:#fff}
 .sb-del{background:#f45c43;color:#fff}
 .sb-share{background:#25d366;color:#fff}
-
 .warn-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,92,67,0.95);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
 .warn-box{text-align:center;max-width:400px}
 .warn-box h2{color:#fff;font-size:24px;margin-bottom:12px}
 .warn-box p{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.6;margin-bottom:16px}
-
 .pulse{animation:pulse 2s infinite}
 @keyframes pulse{0%{opacity:1}50%{opacity:0.5}100%{opacity:1}}
-
 .footer{text-align:center;padding:20px;color:#333;font-size:10px;letter-spacing:2px;margin-top:20px}
-
 @media(max-width:600px){
 .topbar h1{font-size:18px;letter-spacing:3px}
 .qt{font-size:15px}
@@ -150,12 +118,10 @@ input:focus{border-color:#f5af19;outline:none}
 </style>
 </head>
 <body>
-
 <div class="topbar">
 <h1>NAIN</h1>
 <span>MCQ TEST PLATFORM</span>
 </div>
-
 <div class="wrap">
 
 <div id="p0">
@@ -175,7 +141,6 @@ input:focus{border-color:#f5af19;outline:none}
 </div>
 </div>
 </div>
-
 <div class="card">
 <div class="hd"><div class="hd-ic">i</div><h2 style="margin:0">Platform Features</h2></div>
 <div class="inf"><b>01</b> Create MCQ tests instantly</div>
@@ -187,10 +152,9 @@ input:focus{border-color:#f5af19;outline:none}
 <div class="inf"><b>07</b> Save and manage your tests</div>
 <div class="inf"><b>08</b> Works on all devices</div>
 </div>
-
 <div class="card">
 <div class="hd"><div class="hd-ic">S</div><h2 style="margin:0">Saved Tests</h2></div>
-<div id="savedList"><p style="color:#555;font-size:12px">No saved tests yet. Create a test to get started.</p></div>
+<div id="savedList"><p style="color:#555;font-size:12px">No saved tests yet.</p></div>
 </div>
 </div>
 
@@ -334,8 +298,6 @@ window.scrollTo(0,0);
 function resetAll(){
 if(TM){clearInterval(TM);TM=null;}
 QS=[];AN=[];IX=0;SC=0;NM="";WARN=0;TESTING=false;
-document.getElementById("t1").value="";
-document.getElementById("m1").innerHTML="";
 loadSaved();
 goTo("p0");
 }
@@ -438,4 +400,10 @@ var ta=document.createElement("textarea");
 ta.value=txt;ta.style.position="fixed";ta.style.left="-9999px";
 document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);
 mb.innerHTML="<div class='mg mg-g'>Link copied successfully.</div>";
-}catch(e){mb.innerHTML="<div class='mg mg-r'>Please long press the link and copy manually.</di
+}catch(e){mb.innerHTML="<div class='mg mg-r'>Please long press the link and copy manually.</div>";}
+}
+
+function shareWA(){
+var txt=document.getElementById("t2").textContent;
+var msg="NAIN MCQ Test - Click the link below to start your test:\n\n"+txt;
+window.open("https://wa.me/?text=
