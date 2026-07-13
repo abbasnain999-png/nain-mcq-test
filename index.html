@@ -6,7 +6,7 @@
 <title>NAIN - MCQ Test Platform</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a1a;color:#fff;min-height:100vh;padding:0;overflow-x:hidden}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a1a;color:#fff;min-height:100vh;padding:0}
 .wrap{max-width:780px;margin:0 auto;padding:12px}
 .topbar{background:#12122a;border-bottom:1px solid #222;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
 .topbar h1{font-size:22px;color:#f5af19;letter-spacing:5px;font-weight:900}
@@ -14,13 +14,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a1a;color:#fff;min-h
 .card{background:linear-gradient(145deg,#12122a,#1a1a35);border:1px solid #1e1e3a;border-radius:16px;padding:22px;margin-top:16px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 .card h2{color:#f5af19;margin-bottom:10px;font-size:17px;font-weight:700}
 .card p{color:#888;font-size:13px;margin-bottom:8px;line-height:1.5}
-textarea{width:100%;height:250px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;padding:14px;color:#ccc;font-family:'Courier New',monospace;font-size:13px;line-height:1.7;resize:vertical;transition:border 0.3s}
+textarea{width:100%;height:250px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;padding:14px;color:#ccc;font-family:'Courier New',monospace;font-size:13px;line-height:1.7;resize:vertical}
 textarea:focus{border-color:#f5af19;outline:none}
-input[type=text]{width:100%;padding:13px 16px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;color:#fff;font-size:15px;margin:6px 0;transition:border 0.3s}
+input[type=text]{width:100%;padding:13px 16px;background:#0a0a1a;border:1px solid #2a2a4a;border-radius:10px;color:#fff;font-size:15px;margin:6px 0}
 input:focus{border-color:#f5af19;outline:none}
-.bn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;text-align:center;letter-spacing:1px;transition:all 0.3s;text-transform:uppercase}
-.bn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(0,0,0,0.3)}
-.bn:active{transform:translateY(0)}
+.bn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;text-align:center;letter-spacing:1px;text-transform:uppercase}
 .bn-o{background:linear-gradient(135deg,#f5af19,#f12711);color:#000}
 .bn-g{background:linear-gradient(135deg,#11998e,#38ef7d);color:#000}
 .bn-b{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
@@ -32,23 +30,25 @@ input:focus{border-color:#f5af19;outline:none}
 .mg{padding:10px 14px;border-radius:10px;margin:8px 0;font-size:13px;line-height:1.5}
 .mg-g{background:rgba(56,239,125,0.1);border:1px solid rgba(56,239,125,0.3);color:#38ef7d}
 .mg-r{background:rgba(244,92,67,0.1);border:1px solid rgba(244,92,67,0.3);color:#f45c43}
-.lbx{background:#0a0a1a;border:1px solid #f5af19;padding:12px;border-radius:10px;color:#f5af19;font-size:10px;word-break:break-all;margin:8px 0;font-family:monospace;user-select:all;line-height:1.6}
-.tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:5px}
+.mg-y{background:rgba(245,175,25,0.1);border:1px solid rgba(245,175,25,0.3);color:#f5af19}
+.codebox{background:#0a0a1a;border:2px solid #f5af19;padding:20px;border-radius:12px;text-align:center;margin:12px 0}
+.codebox .code{font-size:32px;font-weight:900;color:#f5af19;letter-spacing:8px;font-family:monospace}
+.codebox p{color:#666;font-size:11px;margin-top:8px}
+.tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .tp span{color:#888;font-size:13px;font-weight:600}
 .tm{color:#f5af19;font-size:22px;font-weight:800;font-family:monospace}
-.pb{width:100%;height:4px;background:#1e1e3a;border-radius:2px;margin-bottom:16px;overflow:hidden}
+.pb{width:100%;height:4px;background:#1e1e3a;border-radius:2px;margin-bottom:16px}
 .pf{height:100%;background:linear-gradient(90deg,#f5af19,#f12711);border-radius:2px;transition:width 0.4s}
 .qn{display:inline-block;background:linear-gradient(135deg,#f5af19,#f12711);color:#000;padding:4px 14px;border-radius:14px;font-size:11px;font-weight:700;margin-bottom:10px}
 .qt{font-size:17px;line-height:1.7;margin-bottom:18px;color:#e8e8e8}
-.op{display:flex;align-items:center;padding:13px 16px;background:rgba(255,255,255,0.03);border:2px solid #1e1e3a;border-radius:12px;cursor:pointer;margin-bottom:8px;font-size:14px;transition:all 0.2s;line-height:1.4}
-.op:hover{border-color:#f5af19;background:rgba(245,175,25,0.05)}
+.op{display:flex;align-items:center;padding:13px 16px;background:rgba(255,255,255,0.03);border:2px solid #1e1e3a;border-radius:12px;cursor:pointer;margin-bottom:8px;font-size:14px}
+.op:hover{border-color:#f5af19}
 .op.on{border-color:#f5af19;background:rgba(245,175,25,0.1)}
-.od{width:32px;height:32px;border-radius:50%;background:#1e1e3a;display:flex;align-items:center;justify-content:center;margin-right:12px;font-weight:800;font-size:13px;flex-shrink:0;transition:all 0.2s}
+.od{width:32px;height:32px;border-radius:50%;background:#1e1e3a;display:flex;align-items:center;justify-content:center;margin-right:12px;font-weight:800;font-size:13px;flex-shrink:0}
 .op.on .od{background:linear-gradient(135deg,#f5af19,#f12711);color:#000}
 .bg{display:inline-block;background:rgba(245,175,25,0.1);border:1px solid rgba(245,175,25,0.3);padding:5px 14px;border-radius:14px;font-size:12px;color:#f5af19;margin-bottom:8px}
 .ds{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.dt{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;cursor:pointer;border:1px solid #1e1e3a;background:rgba(255,255,255,0.02);color:#444;transition:all 0.2s}
-.dt:hover{border-color:#667eea}
+.dt{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;cursor:pointer;border:1px solid #1e1e3a;background:rgba(255,255,255,0.02);color:#444}
 .dt-d{background:rgba(56,239,125,0.1);border-color:rgba(56,239,125,0.4);color:#38ef7d}
 .dt-c{background:rgba(245,175,25,0.15);border-color:#f5af19;color:#f5af19}
 .ct{text-align:center}
@@ -68,8 +68,8 @@ input:focus{border-color:#f5af19;outline:none}
 .ra-r{background:rgba(244,92,67,0.05);color:#f45c43;border-left:2px solid #f45c43}
 .nn{display:none}
 .gr{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
-.gc{flex:1;min-width:180px;padding:24px 16px;background:rgba(255,255,255,0.03);border:2px solid #1e1e3a;border-radius:16px;cursor:pointer;text-align:center;transition:all 0.3s}
-.gc:hover{border-color:#f5af19;background:rgba(245,175,25,0.05);transform:translateY(-3px)}
+.gc{flex:1;min-width:180px;padding:24px 16px;background:rgba(255,255,255,0.03);border:2px solid #1e1e3a;border-radius:16px;cursor:pointer;text-align:center}
+.gc:hover{border-color:#f5af19;background:rgba(245,175,25,0.05)}
 .gc .i{font-size:28px;margin-bottom:10px;font-weight:900;color:#f5af19}
 .gc .t{font-size:16px;font-weight:700;color:#f5af19;letter-spacing:1px}
 .gc .d{font-size:11px;color:#555;margin-top:6px;line-height:1.5}
@@ -78,10 +78,9 @@ input:focus{border-color:#f5af19;outline:none}
 .inf{display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:8px;margin:5px 0;font-size:12px;color:#888}
 .inf b{color:#f5af19;min-width:18px}
 .dvd{height:1px;background:#1e1e3a;margin:16px 0}
-.cnt{background:linear-gradient(135deg,#f5af19,#f12711);color:#000;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-right:8px;flex-shrink:0}
 .hd{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .hd-ic{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f5af19,#f12711);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000;flex-shrink:0}
-.saved-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:10px;margin:6px 0;transition:all 0.2s}
+.saved-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:10px;margin:6px 0}
 .saved-item:hover{border-color:#667eea}
 .saved-info{flex:1}
 .saved-info .si-t{color:#ddd;font-size:13px;font-weight:600}
@@ -95,8 +94,7 @@ input:focus{border-color:#f5af19;outline:none}
 .warninner{text-align:center;max-width:400px}
 .warninner h2{color:#fff;font-size:24px;margin-bottom:12px}
 .warninner p{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.6;margin-bottom:16px}
-.pulse{animation:pulse 2s infinite}
-@keyframes pulse{0%{opacity:1}50%{opacity:0.5}100%{opacity:1}}
+.loader{text-align:center;padding:20px;color:#f5af19;font-size:14px}
 .footer{text-align:center;padding:20px;color:#333;font-size:10px;letter-spacing:2px;margin-top:20px}
 @media(max-width:600px){
 .topbar h1{font-size:18px;letter-spacing:3px}
@@ -115,7 +113,7 @@ input:focus{border-color:#f5af19;outline:none}
 <div class="warninner">
 <h2>WARNING</h2>
 <p>You left the test screen. This activity has been recorded. Please stay on the test page until you submit.</p>
-<p class="pulse" style="font-size:18px;font-weight:700;color:#fff" id="warnCount"></p>
+<p style="font-size:18px;font-weight:700;color:#fff" id="warnCount"></p>
 <button class="bn bn-o" style="max-width:300px;margin:0 auto" onclick="closeWarn()">Return to Test</button>
 </div>
 </div>
@@ -134,29 +132,29 @@ input:focus{border-color:#f5af19;outline:none}
 <div class="gc" onclick="goTo('p1')">
 <div class="i">T</div>
 <div class="t">Teacher</div>
-<div class="d">Create test and share direct link with students</div>
+<div class="d">Create test and share code with students</div>
 </div>
-<div class="gc" onclick="goTo('p3')">
+<div class="gc" onclick="goTo('p6')">
 <div class="i">S</div>
 <div class="t">Student</div>
-<div class="d">Enter your name and take the test</div>
+<div class="d">Enter test code and take the test</div>
 </div>
 </div>
 </div>
 <div class="card">
 <div class="hd"><div class="hd-ic">i</div><h2 style="margin:0">Platform Features</h2></div>
 <div class="inf"><b>01</b> Create MCQ tests instantly</div>
-<div class="inf"><b>02</b> Share direct test link via WhatsApp</div>
+<div class="inf"><b>02</b> Share short test code via WhatsApp</div>
 <div class="inf"><b>03</b> Student name registration</div>
 <div class="inf"><b>04</b> Built-in timer and question map</div>
 <div class="inf"><b>05</b> Anti-cheating protection</div>
 <div class="inf"><b>06</b> Instant result with answer review</div>
-<div class="inf"><b>07</b> Save and manage your tests</div>
+<div class="inf"><b>07</b> Manage and delete your tests</div>
 <div class="inf"><b>08</b> Works on all devices</div>
 </div>
 <div class="card">
-<div class="hd"><div class="hd-ic">S</div><h2 style="margin:0">Saved Tests</h2></div>
-<div id="savedList"><p style="color:#555;font-size:12px">No saved tests yet.</p></div>
+<div class="hd"><div class="hd-ic">S</div><h2 style="margin:0">Your Saved Tests</h2></div>
+<div id="savedList"><p class="loader">Loading saved tests...</p></div>
 </div>
 </div>
 
@@ -178,7 +176,7 @@ Answer: B<br><br>
 <div id="m1"></div>
 <div class="rw">
 <button class="bn bn-g" onclick="checkQ()">Check</button>
-<button class="bn bn-o" onclick="createLink()">Create Link</button>
+<button class="bn bn-o" onclick="createTest()">Create Test</button>
 </div>
 </div>
 <button class="bn bn-d" style="margin-top:10px" onclick="goTo('p0')">Back to Home</button>
@@ -186,25 +184,36 @@ Answer: B<br><br>
 
 <div id="p2" class="nn">
 <div class="card">
-<div class="hd"><div class="hd-ic">L</div><h2 style="margin:0">Test Link Ready</h2></div>
-<p>Share this link with your students. They click it and the test opens directly.</p>
-<div class="lbx" id="t2"></div>
-<div class="rw">
-<button class="bn bn-g" onclick="copyLink()">Copy Link</button>
-<button class="bn bn-w" onclick="shareWA()">WhatsApp</button>
+<div class="hd"><div class="hd-ic">L</div><h2 style="margin:0">Test Created Successfully</h2></div>
+<p>Share this code with your students:</p>
+<div class="codebox">
+<div class="code" id="t2"></div>
+<p>Students will enter this code to start the test</p>
 </div>
+<button class="bn bn-g" onclick="copyCode()">Copy Code</button>
+<button class="bn bn-w" onclick="shareWA()">Share on WhatsApp</button>
 <div id="m2"></div>
 <div class="dvd"></div>
 <div class="hd"><div class="hd-ic">?</div><h2 style="margin:0">How It Works</h2></div>
-<div class="inf"><span class="cnt">1</span> Copy the link above</div>
-<div class="inf"><span class="cnt">2</span> Send it to your students</div>
-<div class="inf"><span class="cnt">3</span> Students click the link</div>
-<div class="inf"><span class="cnt">4</span> Test opens automatically</div>
-<div class="inf"><span class="cnt">5</span> Students enter name and start</div>
-<div class="inf"><span class="cnt">6</span> Result shows after submission</div>
+<div class="inf"><b>1</b> Share the code above with students</div>
+<div class="inf"><b>2</b> Students open this website</div>
+<div class="inf"><b>3</b> They click Student and enter the code</div>
+<div class="inf"><b>4</b> They enter their name and start the test</div>
+<div class="inf"><b>5</b> Result shows after submission</div>
 </div>
 <button class="bn bn-b" style="margin-top:10px" onclick="goTo('p1')">Create Another Test</button>
 <button class="bn bn-d" style="margin-top:6px" onclick="goTo('p0')">Back to Home</button>
+</div>
+
+<div id="p6" class="nn">
+<div class="card">
+<div class="hd"><div class="hd-ic">S</div><h2 style="margin:0">Enter Test Code</h2></div>
+<p>Enter the 6-character test code given by your teacher:</p>
+<input type="text" id="t6" placeholder="Enter test code (e.g. ABC123)" maxlength="6" style="text-transform:uppercase;text-align:center;font-size:20px;letter-spacing:5px;font-weight:700">
+<div id="m6"></div>
+<button class="bn bn-o" onclick="loadTest()">Load Test</button>
+</div>
+<button class="bn bn-d" style="margin-top:10px" onclick="goTo('p0')">Back to Home</button>
 </div>
 
 <div id="p3" class="nn">
@@ -270,7 +279,21 @@ Answer: B<br><br>
 <div class="footer">NAIN MCQ TEST PLATFORM</div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 <script>
+var firebaseConfig={
+apiKey:"AIzaSyDKrVXihk6KCX-DeOErTwAzFTQLGz-13hU",
+authDomain:"nain-mcqs-test.firebaseapp.com",
+databaseURL:"https://nain-mcqs-test-default-rtdb.firebaseio.com",
+projectId:"nain-mcqs-test",
+storageBucket:"nain-mcqs-test.firebasestorage.app",
+messagingSenderId:"860924001255",
+appId:"1:860924001255:web:127cce24120e63a219db42"
+};
+firebase.initializeApp(firebaseConfig);
+var db=firebase.database();
+
 var QS=[];
 var IX=0;
 var AN=[];
@@ -279,11 +302,12 @@ var SC=0;
 var NM="";
 var WARN=0;
 var TESTING=false;
-var MAXWARN=3;
 var READY=false;
+var MAXWARN=3;
+var CURCODE="";
 
 function goTo(id){
-var ps=["p0","p1","p2","p3","p4","p5"];
+var ps=["p0","p1","p2","p3","p4","p5","p6"];
 for(var i=0;i<ps.length;i++){document.getElementById(ps[i]).className="nn";}
 document.getElementById(id).className="";
 window.scrollTo(0,0);
@@ -291,9 +315,16 @@ window.scrollTo(0,0);
 
 function resetAll(){
 if(TM){clearInterval(TM);TM=null;}
-QS=[];AN=[];IX=0;SC=0;NM="";WARN=0;TESTING=false;
+QS=[];AN=[];IX=0;SC=0;NM="";WARN=0;TESTING=false;CURCODE="";
 loadSaved();
 goTo("p0");
+}
+
+function makeCode(){
+var c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+var r="";
+for(var i=0;i<6;i++){r+=c.charAt(Math.floor(Math.random()*c.length));}
+return r;
 }
 
 function parseQuestions(raw){
@@ -336,26 +367,6 @@ if(qt.length>0&&ops.length>=2&&ans.length>0){out.push({q:qt,o:ops,a:ans});}
 return out;
 }
 
-function shortFmt(qs){
-var s="";
-for(var i=0;i<qs.length;i++){
-var q=qs[i];s+=q.q+"\n";
-for(var j=0;j<q.o.length;j++){s+=q.o[j].letter+")"+q.o[j].text+"\n";}
-s+="ANS:"+q.a+"\n\n";
-}
-return s;
-}
-
-function sEnc(str){
-var a="";
-for(var i=0;i<str.length;i++){var c=str.charCodeAt(i);if(c>=32&&c<127){a+=str.charAt(i);}else{a+=" ";}}
-try{return btoa(a);}catch(e){return encodeURIComponent(a);}
-}
-
-function sDec(str){
-try{return atob(str);}catch(e){try{return decodeURIComponent(str);}catch(e2){return str;}}
-}
-
 function checkQ(){
 var raw=document.getElementById("t1").value;
 var mb=document.getElementById("m1");
@@ -370,97 +381,120 @@ h+="Q"+(i+1)+": "+sh+" [Ans: "+res[i].a+"]<br>";
 h+="</div>";mb.innerHTML=h;
 }
 
-function createLink(){
+function createTest(){
 var raw=document.getElementById("t1").value;
 var mb=document.getElementById("m1");
 if(!raw||raw.length<10){mb.innerHTML="<div class='mg mg-r'>Please paste questions first.</div>";return;}
 var res=parseQuestions(raw);
 if(res.length===0){mb.innerHTML="<div class='mg mg-r'>No valid questions found.</div>";return;}
-QS=res;
-var short=shortFmt(res);
-var encoded=sEnc(short);
-var base=window.location.href.split("?")[0].split("#")[0];
-var link=base+"#"+encoded;
-document.getElementById("t2").textContent=link;
-saveTest(res.length,encoded);
+mb.innerHTML="<div class='mg mg-y'>Creating test... Please wait.</div>";
+var code=makeCode();
+var testData={questions:[],created:new Date().toISOString(),count:res.length};
+for(var i=0;i<res.length;i++){
+var q=res[i];
+var opts=[];
+for(var j=0;j<q.o.length;j++){opts.push({letter:q.o[j].letter,text:q.o[j].text});}
+testData.questions.push({q:q.q,o:opts,a:q.a});
+}
+db.ref("tests/"+code).set(testData).then(function(){
+CURCODE=code;
+document.getElementById("t2").textContent=code;
+mb.innerHTML="";
 goTo("p2");
+loadSaved();
+}).catch(function(err){
+mb.innerHTML="<div class='mg mg-r'>Error creating test. Check internet connection.</div>";
+});
 }
 
-function copyLink(){
-var txt=document.getElementById("t2").textContent;
+function copyCode(){
+var code=document.getElementById("t2").textContent;
 var mb=document.getElementById("m2");
 try{
 var ta=document.createElement("textarea");
-ta.value=txt;ta.style.position="fixed";ta.style.left="-9999px";
+ta.value=code;ta.style.position="fixed";ta.style.left="-9999px";
 document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);
-mb.innerHTML="<div class='mg mg-g'>Link copied successfully.</div>";
-}catch(e){mb.innerHTML="<div class='mg mg-r'>Please long press the link and copy manually.</div>";}
+mb.innerHTML="<div class='mg mg-g'>Code copied: "+code+"</div>";
+}catch(e){mb.innerHTML="<div class='mg mg-r'>Please copy manually: "+code+"</div>";}
 }
 
 function shareWA(){
-var txt=document.getElementById("t2").textContent;
-var msg="NAIN MCQ Test - Click the link below to start your test:\n\n"+txt;
+var code=document.getElementById("t2").textContent;
+var link=window.location.href.split("?")[0].split("#")[0];
+var msg="NAIN MCQ Test\n\nYour test code is: "+code+"\n\nOpen this link to take the test:\n"+link+"\n\nClick Student, enter code: "+code;
 window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
 }
 
-function saveTest(count,encoded){
-try{
-var saved=JSON.parse(localStorage.getItem("nain_tests")||"[]");
-var id="T"+Date.now();
-var now=new Date();
-var dateStr=now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear();
-var timeStr=(now.getHours()<10?"0":"")+now.getHours()+":"+(now.getMinutes()<10?"0":"")+now.getMinutes();
-saved.unshift({id:id,count:count,date:dateStr,time:timeStr,data:encoded});
-if(saved.length>20)saved=saved.slice(0,20);
-localStorage.setItem("nain_tests",JSON.stringify(saved));
-}catch(e){}
+function loadTest(){
+var code=document.getElementById("t6").value.replace(/\s/g,"").toUpperCase();
+var mb=document.getElementById("m6");
+if(code.length<4){mb.innerHTML="<div class='mg mg-r'>Please enter a valid test code.</div>";return;}
+mb.innerHTML="<div class='mg mg-y'>Loading test... Please wait.</div>";
+db.ref("tests/"+code).once("value").then(function(snap){
+var data=snap.val();
+if(!data||!data.questions){
+mb.innerHTML="<div class='mg mg-r'>Invalid code. No test found. Please check the code.</div>";
+return;
+}
+QS=data.questions;
+CURCODE=code;
+mb.innerHTML="";
+document.getElementById("testInfo").innerHTML="<div class='mg mg-g'>Test loaded: "+QS.length+" questions. Enter your name and click Start Test.</div>";
+goTo("p3");
+}).catch(function(err){
+mb.innerHTML="<div class='mg mg-r'>Error loading test. Check internet connection.</div>";
+});
 }
 
 function loadSaved(){
 var el=document.getElementById("savedList");
-try{
-var saved=JSON.parse(localStorage.getItem("nain_tests")||"[]");
-if(saved.length===0){el.innerHTML="<p style='color:#444;font-size:12px'>No saved tests yet.</p>";return;}
+el.innerHTML="<p class='loader'>Loading...</p>";
+db.ref("tests").once("value").then(function(snap){
+var data=snap.val();
+if(!data){el.innerHTML="<p style='color:#444;font-size:12px'>No saved tests yet.</p>";return;}
+var keys=Object.keys(data);
+if(keys.length===0){el.innerHTML="<p style='color:#444;font-size:12px'>No saved tests yet.</p>";return;}
 var h="";
-for(var i=0;i<saved.length;i++){
-var s=saved[i];
+for(var i=keys.length-1;i>=0;i--){
+var k=keys[i];
+var t=data[k];
+var d=t.created?t.created.substring(0,10):"Unknown";
 h+="<div class='saved-item'>";
 h+="<div class='saved-info'>";
-h+="<div class='si-t'>Test: "+s.count+" Questions</div>";
-h+="<div class='si-d'>Created: "+s.date+" at "+s.time+"</div>";
+h+="<div class='si-t'>Code: "+k+" | "+t.count+" Questions</div>";
+h+="<div class='si-d'>Created: "+d+"</div>";
 h+="</div>";
 h+="<div class='saved-btns'>";
-h+="<button class='sb-share' onclick=\"shareS('"+s.data+"')\">Share</button>";
-h+="<button class='sb-del' onclick=\"delS('"+s.id+"')\">Delete</button>";
+h+="<button class='sb-share' onclick=\"shareS('"+k+"')\">Share</button>";
+h+="<button class='sb-del' onclick=\"delS('"+k+"')\">Delete</button>";
 h+="</div></div>";
 }
 el.innerHTML=h;
-}catch(e){el.innerHTML="<p style='color:#444;font-size:12px'>No saved tests.</p>";}
+}).catch(function(err){
+el.innerHTML="<p style='color:#444;font-size:12px'>Could not load tests.</p>";
+});
 }
 
-function shareS(data){
-var base=window.location.href.split("?")[0].split("#")[0];
-var link=base+"#"+data;
-var msg="NAIN MCQ Test - Click the link below to start your test:\n\n"+link;
+function shareS(code){
+var link=window.location.href.split("?")[0].split("#")[0];
+var msg="NAIN MCQ Test\n\nYour test code is: "+code+"\n\nOpen this link:\n"+link+"\n\nClick Student, enter code: "+code;
 window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
 }
 
-function delS(id){
-if(!confirm("Delete this test?"))return;
-try{
-var saved=JSON.parse(localStorage.getItem("nain_tests")||"[]");
-var nw=[];
-for(var i=0;i<saved.length;i++){if(saved[i].id!==id)nw.push(saved[i]);}
-localStorage.setItem("nain_tests",JSON.stringify(nw));
+function delS(code){
+if(!confirm("Delete test "+code+"?"))return;
+db.ref("tests/"+code).remove().then(function(){
 loadSaved();
-}catch(e){}
+}).catch(function(err){
+alert("Error deleting test.");
+});
 }
 
 function startTest(){
 NM=document.getElementById("t3").value.replace(/^\s+/,"").replace(/\s+$/,"");
 var mb=document.getElementById("m3");
 if(NM.length===0){mb.innerHTML="<div class='mg mg-r'>Please enter your name.</div>";return;}
-if(QS.length===0){mb.innerHTML="<div class='mg mg-r'>No test loaded. Please use a valid test link.</div>";return;}
+if(QS.length===0){mb.innerHTML="<div class='mg mg-r'>No test loaded.</div>";return;}
 IX=0;SC=0;WARN=0;AN=[];
 for(var i=0;i<QS.length;i++)AN.push(null);
 document.getElementById("v1").textContent=NM;
@@ -475,7 +509,7 @@ for(var i=0;i<QS.length;i++){mh+="<div class='dt' id='dt"+i+"' onclick='qJump("+
 document.getElementById("v6").innerHTML=mh;
 goTo("p4");
 showQ();
-setTimeout(function(){TESTING=true;},2000);
+setTimeout(function(){TESTING=true;READY=true;},2000);
 }
 
 function showQ(){
@@ -525,7 +559,7 @@ function submitTest(){
 var un=0;for(var i=0;i<AN.length;i++){if(AN[i]===null)un++;}
 if(TESTING&&un>0){if(!confirm(un+" questions unanswered. Submit anyway?"))return;}
 if(TM){clearInterval(TM);TM=null;}
-TESTING=false;
+TESTING=false;READY=false;
 document.getElementById("warnPage").className="warnpage";
 var co=0,wr=0,sk=0;
 for(var i=0;i<QS.length;i++){
@@ -534,6 +568,12 @@ else if(AN[i]===QS[i].a)co++;
 else wr++;
 }
 var pc=Math.round(co/QS.length*100);
+
+if(CURCODE&&NM){
+var resultData={name:NM,score:pc,correct:co,wrong:wr,skipped:sk,total:QS.length,time:SC,warnings:WARN,date:new Date().toISOString()};
+db.ref("results/"+CURCODE).push(resultData).catch(function(e){});
+}
+
 goTo("p5");
 var em,ti;
 if(pc>=90){em="OUTSTANDING";ti="Outstanding Result!";}
@@ -574,9 +614,7 @@ document.getElementById("w10").innerHTML=rv;
 }
 
 document.addEventListener("visibilitychange",function(){
-if(TESTING===true&&READY===true&&document.hidden===true){
-showWarn();
-}
+if(TESTING===true&&READY===true&&document.hidden===true){showWarn();}
 });
 
 window.addEventListener("popstate",function(){
@@ -587,27 +625,10 @@ showWarn();
 });
 
 window.onload=function(){
-TESTING=false;
-READY=false;
-WARN=0;
+TESTING=false;READY=false;WARN=0;
 document.getElementById("warnPage").className="warnpage";
 history.pushState(null,null,location.href);
 loadSaved();
-var hash=window.location.hash;
-if(hash&&hash.length>1){
-var encoded=hash.substring(1);
-var decoded=sDec(encoded);
-if(decoded&&decoded.length>5){
-var parsed=parseQuestions(decoded);
-if(parsed.length>0){
-QS=parsed;
-document.getElementById("testInfo").innerHTML="<div class='mg mg-g'>Test loaded: "+parsed.length+" questions. Enter your name and click Start Test.</div>";
-goTo("p3");
-setTimeout(function(){READY=true;},3000);
-return;
-}
-}
-}
 goTo("p0");
 setTimeout(function(){READY=true;},3000);
 };
