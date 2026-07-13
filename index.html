@@ -32,8 +32,6 @@ input:focus{border-color:#f5af19;outline:none}
 .mg{padding:10px 14px;border-radius:10px;margin:8px 0;font-size:13px;line-height:1.5}
 .mg-g{background:rgba(56,239,125,0.1);border:1px solid rgba(56,239,125,0.3);color:#38ef7d}
 .mg-r{background:rgba(244,92,67,0.1);border:1px solid rgba(244,92,67,0.3);color:#f45c43}
-.mg-b{background:rgba(102,126,234,0.1);border:1px solid rgba(102,126,234,0.3);color:#667eea}
-.mg-y{background:rgba(245,175,25,0.1);border:1px solid rgba(245,175,25,0.3);color:#f5af19}
 .lbx{background:#0a0a1a;border:1px solid #f5af19;padding:12px;border-radius:10px;color:#f5af19;font-size:10px;word-break:break-all;margin:8px 0;font-family:monospace;user-select:all;line-height:1.6}
 .tp{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:5px}
 .tp span{color:#888;font-size:13px;font-weight:600}
@@ -59,18 +57,11 @@ input:focus{border-color:#f5af19;outline:none}
 .sb{text-align:center;padding:14px 16px;background:rgba(255,255,255,0.03);border:1px solid #1e1e3a;border-radius:12px;min-width:70px}
 .sb .n{font-size:24px;font-weight:900}
 .sb .l{font-size:9px;color:#555;margin-top:3px;text-transform:uppercase;letter-spacing:1px}
-.gn{color:#38ef7d}
-.rd{color:#f45c43}
-.yw{color:#f5af19}
-.bl{color:#667eea}
+.gn{color:#38ef7d}.rd{color:#f45c43}.yw{color:#f5af19}.bl{color:#667eea}
 .rc{background:rgba(255,255,255,0.02);border:1px solid #1e1e3a;border-radius:12px;padding:14px;margin-top:10px;text-align:left}
-.rc-g{border-left:3px solid #38ef7d}
-.rc-r{border-left:3px solid #f45c43}
-.rc-y{border-left:3px solid #f5af19}
+.rc-g{border-left:3px solid #38ef7d}.rc-r{border-left:3px solid #f45c43}.rc-y{border-left:3px solid #f5af19}
 .rt{display:inline-block;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
-.rt-g{background:rgba(56,239,125,0.1);color:#38ef7d}
-.rt-r{background:rgba(244,92,67,0.1);color:#f45c43}
-.rt-y{background:rgba(245,175,25,0.1);color:#f5af19}
+.rt-g{background:rgba(56,239,125,0.1);color:#38ef7d}.rt-r{background:rgba(244,92,67,0.1);color:#f45c43}.rt-y{background:rgba(245,175,25,0.1);color:#f5af19}
 .rq{color:#aaa;font-size:13px;margin-bottom:6px;line-height:1.5}
 .ra{padding:6px 10px;border-radius:8px;margin:3px 0;font-size:12px;line-height:1.4}
 .ra-g{background:rgba(56,239,125,0.05);color:#38ef7d;border-left:2px solid #38ef7d}
@@ -99,10 +90,11 @@ input:focus{border-color:#f5af19;outline:none}
 .saved-btns button{padding:6px 10px;border:none;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;text-transform:uppercase}
 .sb-del{background:#f45c43;color:#fff}
 .sb-share{background:#25d366;color:#fff}
-.warn-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,92,67,0.95);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
-.warn-box{text-align:center;max-width:400px}
-.warn-box h2{color:#fff;font-size:24px;margin-bottom:12px}
-.warn-box p{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.6;margin-bottom:16px}
+.warnpage{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,92,67,0.95);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.warnpage.active{display:flex}
+.warninner{text-align:center;max-width:400px}
+.warninner h2{color:#fff;font-size:24px;margin-bottom:12px}
+.warninner p{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.6;margin-bottom:16px}
 .pulse{animation:pulse 2s infinite}
 @keyframes pulse{0%{opacity:1}50%{opacity:0.5}100%{opacity:1}}
 .footer{text-align:center;padding:20px;color:#333;font-size:10px;letter-spacing:2px;margin-top:20px}
@@ -118,6 +110,16 @@ input:focus{border-color:#f5af19;outline:none}
 </style>
 </head>
 <body>
+
+<div id="warnPage" class="warnpage">
+<div class="warninner">
+<h2>WARNING</h2>
+<p>You left the test screen. This activity has been recorded. Please stay on the test page until you submit.</p>
+<p class="pulse" style="font-size:18px;font-weight:700;color:#fff" id="warnCount"></p>
+<button class="bn bn-o" style="max-width:300px;margin:0 auto" onclick="closeWarn()">Return to Test</button>
+</div>
+</div>
+
 <div class="topbar">
 <h1>NAIN</h1>
 <span>MCQ TEST PLATFORM</span>
@@ -265,15 +267,6 @@ Answer: B<br><br>
 <button class="bn bn-b" style="margin-top:12px" onclick="resetAll()">Back to Home</button>
 </div>
 
-<div id="warnScreen" class="warn-overlay nn">
-<div class="warn-box">
-<h2>WARNING</h2>
-<p>You left the test screen. This activity has been recorded. Please stay on the test page until you submit.</p>
-<p class="pulse" style="font-size:18px;font-weight:700;color:#fff" id="warnCount"></p>
-<button class="bn bn-o" style="max-width:300px;margin:0 auto" onclick="closeWarn()">Return to Test</button>
-</div>
-</div>
-
 <div class="footer">NAIN MCQ TEST PLATFORM</div>
 </div>
 
@@ -287,6 +280,7 @@ var NM="";
 var WARN=0;
 var TESTING=false;
 var MAXWARN=3;
+var READY=false;
 
 function goTo(id){
 var ps=["p0","p1","p2","p3","p4","p5"];
@@ -406,4 +400,217 @@ mb.innerHTML="<div class='mg mg-g'>Link copied successfully.</div>";
 function shareWA(){
 var txt=document.getElementById("t2").textContent;
 var msg="NAIN MCQ Test - Click the link below to start your test:\n\n"+txt;
-window.open("https://wa.me/?text=
+window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
+}
+
+function saveTest(count,encoded){
+try{
+var saved=JSON.parse(localStorage.getItem("nain_tests")||"[]");
+var id="T"+Date.now();
+var now=new Date();
+var dateStr=now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear();
+var timeStr=(now.getHours()<10?"0":"")+now.getHours()+":"+(now.getMinutes()<10?"0":"")+now.getMinutes();
+saved.unshift({id:id,count:count,date:dateStr,time:timeStr,data:encoded});
+if(saved.length>20)saved=saved.slice(0,20);
+localStorage.setItem("nain_tests",JSON.stringify(saved));
+}catch(e){}
+}
+
+function loadSaved(){
+var el=document.getElementById("savedList");
+try{
+var saved=JSON.parse(localStorage.getItem("nain_tests")||"[]");
+if(saved.length===0){el.innerHTML="<p style='color:#444;font-size:12px'>No saved tests yet.</p>";return;}
+var h="";
+for(var i=0;i<saved.length;i++){
+var s=saved[i];
+h+="<div class='saved-item'>";
+h+="<div class='saved-info'>";
+h+="<div class='si-t'>Test: "+s.count+" Questions</div>";
+h+="<div class='si-d'>Created: "+s.date+" at "+s.time+"</div>";
+h+="</div>";
+h+="<div class='saved-btns'>";
+h+="<button class='sb-share' onclick=\"shareS('"+s.data+"')\">Share</button>";
+h+="<button class='sb-del' onclick=\"delS('"+s.id+"')\">Delete</button>";
+h+="</div></div>";
+}
+el.innerHTML=h;
+}catch(e){el.innerHTML="<p style='color:#444;font-size:12px'>No saved tests.</p>";}
+}
+
+function shareS(data){
+var base=window.location.href.split("?")[0].split("#")[0];
+var link=base+"#"+data;
+var msg="NAIN MCQ Test - Click the link below to start your test:\n\n"+link;
+window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
+}
+
+function delS(id){
+if(!confirm("Delete this test?"))return;
+try{
+var saved=JSON.parse(localStorage.getItem("nain_tests")||"[]");
+var nw=[];
+for(var i=0;i<saved.length;i++){if(saved[i].id!==id)nw.push(saved[i]);}
+localStorage.setItem("nain_tests",JSON.stringify(nw));
+loadSaved();
+}catch(e){}
+}
+
+function startTest(){
+NM=document.getElementById("t3").value.replace(/^\s+/,"").replace(/\s+$/,"");
+var mb=document.getElementById("m3");
+if(NM.length===0){mb.innerHTML="<div class='mg mg-r'>Please enter your name.</div>";return;}
+if(QS.length===0){mb.innerHTML="<div class='mg mg-r'>No test loaded. Please use a valid test link.</div>";return;}
+IX=0;SC=0;WARN=0;AN=[];
+for(var i=0;i<QS.length;i++)AN.push(null);
+document.getElementById("v1").textContent=NM;
+document.getElementById("qCount").textContent=QS.length+" Questions";
+if(TM)clearInterval(TM);
+TM=setInterval(function(){
+SC++;var mm=SC/60|0;var ss=SC%60;
+document.getElementById("v3").textContent=(mm<10?"0"+mm:mm)+":"+(ss<10?"0"+ss:ss);
+},1000);
+var mh="";
+for(var i=0;i<QS.length;i++){mh+="<div class='dt' id='dt"+i+"' onclick='qJump("+i+")'>"+(i+1)+"</div>";}
+document.getElementById("v6").innerHTML=mh;
+goTo("p4");
+showQ();
+setTimeout(function(){TESTING=true;},2000);
+}
+
+function showQ(){
+var q=QS[IX];
+var answered=0;for(var i=0;i<AN.length;i++){if(AN[i]!==null)answered++;}
+var h="<div class='qn'>Question "+(IX+1)+" of "+QS.length+"</div>";
+h+="<div style='display:flex;justify-content:space-between;margin-bottom:8px'>";
+h+="<span style='color:#38ef7d;font-size:11px'>Answered: "+answered+"/"+QS.length+"</span>";
+if(WARN>0){h+="<span style='color:#f45c43;font-size:11px'>Warnings: "+WARN+"/"+MAXWARN+"</span>";}
+h+="</div>";
+h+="<div class='qt'>"+esc(q.q)+"</div>";
+for(var j=0;j<q.o.length;j++){
+var o=q.o[j];var c=AN[IX]===o.letter?"op on":"op";
+h+="<div class='"+c+"' onclick=\"selOp('"+o.letter+"')\">";
+h+="<div class='od'>"+o.letter+"</div>";
+h+="<div>"+esc(o.text)+"</div></div>";
+}
+document.getElementById("v5").innerHTML=h;
+document.getElementById("v2").textContent="Q "+(IX+1)+"/"+QS.length;
+document.getElementById("v4").style.width=((IX+1)/QS.length*100)+"%";
+for(var i=0;i<QS.length;i++){
+var dt=document.getElementById("dt"+i);dt.className="dt";
+if(AN[i]!==null)dt.className="dt dt-d";
+if(i===IX)dt.className+=" dt-c";
+}
+}
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function selOp(l){AN[IX]=l;showQ();}
+function qNext(){if(IX<QS.length-1){IX++;showQ();}else{if(confirm("Last question. Submit test?")){submitTest();}}}
+function qPrev(){if(IX>0){IX--;showQ();}}
+function qSkip(){AN[IX]=null;if(IX<QS.length-1){IX++;showQ();}}
+function qJump(i){IX=i;showQ();}
+
+function showWarn(){
+WARN++;
+if(WARN>=MAXWARN){submitTest();return;}
+document.getElementById("warnCount").textContent="Warning "+WARN+" of "+MAXWARN+". Test will auto-submit after "+MAXWARN+" warnings.";
+document.getElementById("warnPage").className="warnpage active";
+}
+
+function closeWarn(){
+document.getElementById("warnPage").className="warnpage";
+}
+
+function submitTest(){
+var un=0;for(var i=0;i<AN.length;i++){if(AN[i]===null)un++;}
+if(TESTING&&un>0){if(!confirm(un+" questions unanswered. Submit anyway?"))return;}
+if(TM){clearInterval(TM);TM=null;}
+TESTING=false;
+document.getElementById("warnPage").className="warnpage";
+var co=0,wr=0,sk=0;
+for(var i=0;i<QS.length;i++){
+if(AN[i]===null)sk++;
+else if(AN[i]===QS[i].a)co++;
+else wr++;
+}
+var pc=Math.round(co/QS.length*100);
+goTo("p5");
+var em,ti;
+if(pc>=90){em="OUTSTANDING";ti="Outstanding Result!";}
+else if(pc>=75){em="EXCELLENT";ti="Excellent Performance!";}
+else if(pc>=60){em="GOOD JOB";ti="Good Performance!";}
+else if(pc>=40){em="AVERAGE";ti="Keep Improving!";}
+else{em="BELOW AVERAGE";ti="Need More Practice!";}
+document.getElementById("w1").textContent=em;
+document.getElementById("w2").textContent=ti;
+document.getElementById("w3").textContent=NM;
+document.getElementById("w4").textContent=pc+"%";
+document.getElementById("w5").textContent=co;
+document.getElementById("w6").textContent=wr;
+document.getElementById("w7").textContent=sk;
+document.getElementById("w8").textContent=QS.length;
+var mm=SC/60|0;var ss=SC%60;
+var timeStr="Time: "+(mm<10?"0"+mm:mm)+":"+(ss<10?"0"+ss:ss);
+if(WARN>0){timeStr+=" | Warnings: "+WARN;}
+document.getElementById("w9").textContent=timeStr;
+var rv="";
+for(var i=0;i<QS.length;i++){
+var q=QS[i];var a=AN[i];
+var ok=(a===q.a);var skip=(a===null);
+var cc=skip?"rc-y":(ok?"rc-g":"rc-r");
+var tc=skip?"rt-y":(ok?"rt-g":"rt-r");
+var tt=skip?"SKIPPED":(ok?"CORRECT":"WRONG");
+var ct=q.a;
+for(var j=0;j<q.o.length;j++){if(q.o[j].letter===q.a){ct=q.o[j].text;break;}}
+var ut="";if(a){for(var j=0;j<q.o.length;j++){if(q.o[j].letter===a){ut=q.o[j].text;break;}}}
+rv+="<div class='rc "+cc+"'>";
+rv+="<span class='rt "+tc+"'>"+tt+" - Q"+(i+1)+"</span>";
+rv+="<div class='rq'>"+esc(q.q)+"</div>";
+if(a&&!ok){rv+="<div class='ra ra-r'>Your Answer: "+a+") "+esc(ut)+"</div>";}
+rv+="<div class='ra ra-g'>Correct Answer: "+q.a+") "+esc(ct)+"</div>";
+rv+="</div>";
+}
+document.getElementById("w10").innerHTML=rv;
+}
+
+document.addEventListener("visibilitychange",function(){
+if(TESTING===true&&READY===true&&document.hidden===true){
+showWarn();
+}
+});
+
+window.addEventListener("popstate",function(){
+if(TESTING===true&&READY===true){
+history.pushState(null,null,location.href);
+showWarn();
+}
+});
+
+window.onload=function(){
+TESTING=false;
+READY=false;
+WARN=0;
+document.getElementById("warnPage").className="warnpage";
+history.pushState(null,null,location.href);
+loadSaved();
+var hash=window.location.hash;
+if(hash&&hash.length>1){
+var encoded=hash.substring(1);
+var decoded=sDec(encoded);
+if(decoded&&decoded.length>5){
+var parsed=parseQuestions(decoded);
+if(parsed.length>0){
+QS=parsed;
+document.getElementById("testInfo").innerHTML="<div class='mg mg-g'>Test loaded: "+parsed.length+" questions. Enter your name and click Start Test.</div>";
+goTo("p3");
+setTimeout(function(){READY=true;},3000);
+return;
+}
+}
+}
+goTo("p0");
+setTimeout(function(){READY=true;},3000);
+};
+</script>
+</body>
+</html>
